@@ -29,6 +29,8 @@ body {
 }
 .main {
   display: flex;
+  flex-direction: row;
+  white-space: nowrap;
   height: 100vh;
   max-width: 100vw;
 }
@@ -41,7 +43,6 @@ table {
   vertical-align: middle;
   word-break: break-all;
   font-size: 14px;
-  white-space: nowrap;
   align-items: center;
   line-height: normal;
 }

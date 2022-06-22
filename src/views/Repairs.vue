@@ -40,7 +40,18 @@
 </template>
 
 <script>
-
+const url = "/api/v1/rma-wig-status/";
+new Vue({
+  el: "#app",
+  data: {
+    rows: [],
+  },
+  mounted() {
+    axios.get(url).then((response) => {
+      this.rows = response.data.results;
+    });
+  },
+});
 export default {
   name: 'Repairs'
 }
