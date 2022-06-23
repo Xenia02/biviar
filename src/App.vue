@@ -1,8 +1,10 @@
 <template>
-<div class="main">
-  <Sidebar></Sidebar>
-  <router-view />
-</div>
+  <div class="main">
+    <Sidebar></Sidebar>
+    <div class="content">
+      <router-view />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -11,7 +13,7 @@ import Sidebar from "./components/Sidebar.vue";
 export default {
   name: "app",
   components: {
-    Sidebar
+    Sidebar,
   },
 };
 </script>
@@ -23,22 +25,39 @@ body {
     sans-serif;
   font-size: 15px;
 }
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(104, 115, 146);
+}
 * {
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
 }
 .main {
   display: flex;
-  flex-direction: row;
   white-space: nowrap;
   height: 100vh;
-  max-width: 100vw;
+  width: 100%;
+}
+.content {
+  position: relative;
+  margin-left: 250px;
+  padding-right: 10px;
+  overflow-x: auto;
 }
 table {
   border-top: none;
   margin: 10px;
   border-collapse: collapse;
-  width: 80vw;
   text-align: center;
   vertical-align: middle;
   word-break: break-all;
@@ -72,19 +91,25 @@ tr:hover {
   background-color: rgb(201, 207, 223);
 }
 .aside {
+  position: fixed;
+  top: 0;
+  bottom: 0;
   background-color: rgb(52, 64, 83);
-  width: 17vw;
+  min-width: 250px;
+  overflow-y: auto;
 }
 a {
   color: rgb(52, 64, 83);
 }
-h3 {
+ul h3 {
   color: rgb(170, 170, 170);
   background-color: rgb(42, 51, 66);
   padding: 10px;
+  padding-right: 20px;
   font-size: 20px;
 }
 li {
+  padding-right: 20px;
   font-size: 15px;
   border: none;
   width: 100%;
